@@ -1,0 +1,61 @@
+getwd()
+p='C:/Users/Admin/Downloads'
+list.dirs()
+list.files()
+library(readr()
+head(df_train)
+aggregate(df_train[,1:4],list(df_train[,5]),mean)
+epi_r1 <- read.csv("epi_r1.csv")
+View(epi_r1)
+df<-epi_r1
+df[df==""] <- NA
+df1<-na.exclude(df)
+View(df1)
+str(df1)	
+library("factoextra")
+df <- df1[1:1000, 1:6]
+na.exclude(df)
+View(df)		
+head(df[, 1:6])
+df <- na.omit(df)
+View(df)		
+set.seed(1234)	
+ind = sample(1:nrow(df),0.8*nrow(df),replace = F)
+df_train =df[ind,-1]
+df_test = df[-ind,-1]
+summary(df)
+dim(df)
+apply(df,2,range)
+apply(df,2,summary)
+df_train1 <- scale(df_train)
+
+head(df_train1)
+class(df_train1)
+km = kmeans (df_train1,7)
+km$withinss
+
+km = kmeans (df_train1,8)
+km$withinss
+
+km = kmeans (df_train1,10)
+km$withinss
+class(km$cluster)
+summary(km)
+as.numeric(km$cluster)
+length(km$cluster)
+dim(df_train)
+library(cluster)
+
+clusplot(df_train,df_train$cl,cex=0.8,color=T,shade=T, labels=4,lines=0)
+head(df_train)
+str(df_train)
+d1	<- dist(df_train,method='euclidean')
+summary(d1)
+fit <- hclust(d1,method = 'ward.D4')
+plot(fit)
+     
+
+
+
+
+        
